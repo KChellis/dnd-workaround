@@ -11,8 +11,10 @@
         <h3>{{spell.name}}</h3>
         <button *ngIf="!spellsFull" (click)="addSpell(spell.id)">Add</button>
         <button (click)="removeSpell(spell.id)">Remove</button>
+        <br>
           level {{spell.level}}
           <i>{{spell.school}}</i>
+          <h4 *ngIf="spell.ritual != false">Ritual</h4>
          <br>
          <strong>
            Casting Time:
@@ -27,13 +29,14 @@
          </strong>{{spell.duration}}
          <br>
         <ul>
-          <li *ngIf="spell.verbal != false">Verbal</li>
-          <li *ngIf="spell.somatic != false">Somatic</li>
           <li>
            <strong>Components: </strong>
           </li>
-          <li>{{spell.description}}</li>
+          <li *ngIf="spell.verbal != false">Verbal</li>
+          <li *ngIf="spell.somatic != false">Somatic</li>
+          <li>Materials: {{spell.material}}</li>
         </ul>
+        <p>{{spell.description}}</p>
       </li>
     </ul>
   </div>
