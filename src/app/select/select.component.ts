@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CharacterService } from '../character.service';
 import { Router } from '@angular/router';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-select',
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class SelectComponent implements OnInit {
 
-  constructor(private characterService: CharacterService, private router: Router) { }
+  constructor(private characterService: CharacterService, private router: Router, private http:HttpClient) { }
   tempList;
   characterList;
   ngOnInit() {

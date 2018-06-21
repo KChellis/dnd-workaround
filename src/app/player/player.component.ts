@@ -42,6 +42,7 @@ export class PlayerComponent implements OnInit {
     // this.spellList = this.spellService.getSpellsByClass(this.currentCharacter.classId);
     // this.characterClass = this.classService.getClassById(4);
     // this.spellList = this.spellService.getSpellsByClass(4);
+    
 
   }
 
