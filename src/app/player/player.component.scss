@@ -1,6 +1,19 @@
 $header-font: 'Germania One', cursive;
 $main-font: 'Over the Rainbow', cursive;
+.grid2 {
+  display: grid;
+  text-align: center;
+  margin-left: 33vw;
+  margin-right: 10vw;
+  max-width: 500px;
+  font-size: 15px;
+  li {
+    padding-right: 30px;
+    list-style-type: none;
+  }
 
+
+}
 .grid {
   display: grid;
   // grid-template-columns: 45vw;

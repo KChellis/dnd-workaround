@@ -102,5 +102,5 @@ export class PlayerComponent implements OnInit {
       return "Wizard"
     }
   }
-
+ 
 }

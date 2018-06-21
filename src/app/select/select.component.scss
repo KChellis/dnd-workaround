@@ -1,0 +1,49 @@
+$header-font: 'Germania One', cursive;
+
+$main-font: 'Over the Rainbow', cursive;
+
+.grid {
+  text-align: center;
+  display: grid;
+  margin-left: 30vw;
+  margin-right: 10vw;
+  max-width: 500px;
+  li {
+    list-style-type: none;
+    background-image: url("../../assets/svg/body.svg");
+  }
+  h3 {
+    font-family: $header-font;
+    font-size: 35px;
+    color: yellow;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #4d243d;
+  }
+  h5 {
+    font-family: $main-font;
+    font-size: 20px;
+
+  }
+  h4{
+    font-family: $header-font;
+    font-size: 30px;
+    color: yellow;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #4d243d;
+    text-decoration: underline;
+  }
+  .chooseButton {
+    background-color: #BB957D;
+    // padding-top: 10px;
+    // padding-bottom: 10px;
+    padding-right: 15px;
+    padding-left: 15px;
+    border-radius: 10px;
+    font-family: $main-font;
+    font-size: 20px;
+    max-height: 40px;
+  }
+  .chooseButton:hover {
+    cursor: pointer;
+  }
+}
