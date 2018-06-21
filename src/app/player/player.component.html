@@ -68,7 +68,8 @@
             <h3>{{spell.name}}</h3>
               level {{spell.level}}
               <i>{{spell.school}}</i>
-             <br>
+              <span *ngIf="spell.ritual != false">, can be cast as ritual</span>
+              <br>
              <strong>
                Casting Time:
              </strong> {{spell.castTime}}
@@ -85,7 +86,11 @@
               <li>
                <strong>Components: </strong>
               </li>
-              <li>{{spell.description}}</li>
+              <li *ngIf="spell.verbal != false">Verbal</li>
+              <li *ngIf="spell.somatic != false">Somatic</li>
+              <li>Materials: {{spell.material}}</li>
+              <br>
+              <p>{{spell.description}}</p>
             </ul>
           </li>
         </ul>
