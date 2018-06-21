@@ -9,32 +9,35 @@
       <h4 *ngIf="!spellsFull">You have <span id="red">{{spellsLeft}}</span> spells left to choose.</h4>
       <button (click)="done()">Done choosing spells</button>
       <ul>
-        <li *ngFor="let spell of spellList | async" class="spell">
-          <h3>{{spell.name}}</h3>
-          <button *ngIf="!spellsFull" (click)="addSpell(spell.id)">Add</button>
-          <button (click)="removeSpell(spell.id)">Remove</button>
-            level {{spell.level}}
-            <i>{{spell.school}}</i>
-           <br>
-           <strong>
-             Casting Time:
-           </strong> {{spell.castTime}}
-           <br>
-           <strong>
-             Range:
-           </strong> {{spell.range}}
-           <br>
-           <strong>
-             Duration:
-           </strong>{{spell.duration}}
-           <br>
-          <ul>
-            <li>
-             <strong>Components: </strong>
-            </li>
-            <li><p *ngFor="let paragraph of formatDescription(spell.description)">{{paragraph}}</p></li>
-          </ul>
-        </li>
+        <div *ngFor="let spell of spellList | async">
+          <li  *ngIf="spell.level <= currentCharacter.castingLevel" class="spell">
+            <h3>{{spell.name}}</h3>
+            <button *ngIf="!spellsFull" (click)="addSpell(spell.id)">Add</button>
+            <button (click)="removeSpell(spell.id)">Remove</button>
+              level {{spell.level}}
+              <i>{{spell.school}}</i>
+             <br>
+             <strong>
+               Casting Time:
+             </strong> {{spell.castTime}}
+             <br>
+             <strong>
+               Range:
+             </strong> {{spell.range}}
+             <br>
+             <strong>
+               Duration:
+             </strong>{{spell.duration}}
+             <br>
+            <ul>
+              <li>
+               <strong>Components: </strong>
+              </li>
+              <li><p *ngFor="let paragraph of formatDescription(spell.description)">{{paragraph}}</p></li>
+            </ul>
+          </li>
+        </div>
+
       </ul>
     </div>
   </div>
