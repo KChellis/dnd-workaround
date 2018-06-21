@@ -29,7 +29,7 @@
           <li *ngIf="spell.somatic != false">Somatic</li>
           <li>Materials: {{spell.material}}</li>
           <br>
-          <p>{{spell.description}}</p>
+          <p *ngFor="let paragraph of formatDescription(spell.description)">{{paragraph}}</p>
         </ul>
       </li>
     </ul>
