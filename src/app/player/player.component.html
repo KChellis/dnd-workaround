@@ -1,4 +1,43 @@
-<div class="grid">
+<div *ngIf= "!spellsEquipped" class="content" ng-controller="formController">
+  <div >
+    <h3>EquippedSpells:</h3>
+    <ul>
+      <li *ngFor="let spell of equippedSpells">{{spell.name}}</li>
+    </ul>
+    <h4 *ngIf="!spellsFull">You have {{spellsLeft}} spells left to choose.</h4>
+    <button (click)="done()">Done choosing spells</button>
+    <ul>
+      <li *ngFor="let spell of spellList | async" class="spell">
+        <h3>{{spell.name}}</h3>
+        <button *ngIf="!spellsFull" (click)="addSpell(spell.id)">Add</button>
+        <button (click)="removeSpell(spell.id)">Remove</button>
+          level {{spell.level}}
+          <i>{{spell.school}}</i>
+         <br>
+         <strong>
+           Casting Time:
+         </strong> {{spell.castTime}}
+         <br>
+         <strong>
+           Range:
+         </strong> {{spell.range}}
+         <br>
+         <strong>
+           Duration:
+         </strong>{{spell.duration}}
+         <br>
+        <ul>
+          <li>
+           <strong>Components: </strong>
+          </li>
+          <li>{{spell.description}}</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div *ngIf="spellsEquipped" class="grid">
   <h1>Character</h1>
   <div class="something">
     <div class="info">
@@ -18,7 +57,7 @@
       <span>Spell Count:</span> {{currentCharacter.spellCount}}
     </div>
     <div class="info">
-      
+
       <div class="spells">
         <span>Prepared Spells:</span>
         <ul>
@@ -47,6 +86,7 @@
             </ul>
           </li>
         </ul>
+        <button (click)="changeSpells()">Choose new spells</button>
       </div>
     </div>
   </div>

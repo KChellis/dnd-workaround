@@ -18,19 +18,51 @@ export class PlayerComponent implements OnInit {
   constructor(private router: ActivatedRoute, private characterService: CharacterService, private classService: ClassService, private spellService: SpellService, private http:HttpClient) { }
   currentCharacter;
   characterClass;
+  spellList;
   characterId: number;
+  equippedSpellIds: number[] = [];
   equippedSpells = [];
+  spellsFull: boolean = false;
+  spellsEquipped: booelan = false;
+  spellsLeft: number;
+
   ngOnInit() {
-    // this.router.params.forEach((urlParameters) => {
-    //     this.characterId = parseInt(urlParameters['id']);
-    // });
-    // this.currentCharacter = this.characterService.getCharacterById(this.characterId);
-    // this.characterClass = this.classService.getClassById(this.currentCharacter.classId);
-    // let tempSpells = this.currentCharacter.preparedSpells.split(",");
-    // for (let i = 0; i < tempSpells.length; i++) {
-    //     let spell = this.spellService.getSpellById(parseInt(tempSpells[i]));
-    //     this.equippedSpells.push(spell);
-    // }
+    this.router.params.forEach((urlParameters) => {
+        this.characterId = parseInt(urlParameters['id']);
+    });
+    this.currentCharacter = this.characterService.getCharacterById(this.characterId);
+    this.characterClass = this.classService.getClassById(this.currentCharacter.classId);
+    this.spellList = this.spellService.getSpellsByClass(this.currentCharacter.classId)
+
+  }
+
+  addSpell(spellId: number){
+    if(this.equippedSpells.indexOf(spellId) === -1){
+      this.equippedSpellIds.push(spellId);
+      this.equippedSpells.push(this.spellService.getSpellById(spellId));
+      this.spellsLeft -= 1;
+      if(this.equippedSpells.length === this.currentCharacter.spellCount){
+        this.spellsFull = true;
+      }
+    }
+
+  }
+
+  removeSpell(spellId: number){
+    if(this.equippedSpells.indexOf(spellId) !== -1){
+      this.equippedSpells.splice(this.equippedSpellIds.indexOf(spellId), 1);
+      this.equippedSpellIds.splice(this.equippedSpellIds.indexOf(spellId), 1);
+      this.spellsLeft += 1;
+      this.spellsFull = false;
+    }
+  }
+
+  done(){
+    this.spellsEquipped = true;
+  }
+
+  changeSpells(){
+    this.spellsEquipped = false;
   }
 
 }

@@ -4,6 +4,7 @@ import { Class } from '../models/class.model'
 import { CharacterService } from '../character.service';
 import { ClassService } from '../class.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { ActivatedRoute, Params } from '@angular/router';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type' : 'application/json'})
@@ -17,7 +18,7 @@ const httpOptions = {
 })
 export class CharacterFormComponent implements OnInit {
 
-  constructor(private characterService: CharacterService, private classService: ClassService, private http:HttpClient) { }
+  constructor(private router: ActivatedRoute, private characterService: CharacterService, private classService: ClassService, private http:HttpClient) { }
   classList;
 
   ngOnInit() {

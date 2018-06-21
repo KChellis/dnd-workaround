@@ -11,7 +11,7 @@ const appRoutes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'player',
+    path: 'character/:id',
     component: PlayerComponent
   },
   {

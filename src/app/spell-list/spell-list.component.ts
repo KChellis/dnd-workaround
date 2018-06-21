@@ -4,6 +4,7 @@ import { Character } from '../models/character.model';
 import { SpellService } from '../spell.service';
 import { CharacterService } from '../character.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-spell-list',
@@ -16,7 +17,7 @@ export class SpellListComponent implements OnInit {
 
   // currentCharacter: Character;
 
-  constructor(private spellService: SpellService, private characterService: CharacterService, private http:HttpClient) { }
+  constructor(private router: ActivatedRoute, private spellService: SpellService, private characterService: CharacterService, private http:HttpClient) { }
   spellList;
   equippedSpells: number[] = [];
   spellsFull: boolean = false;
