@@ -1,5 +1,22 @@
+$header-font: 'Germania One', cursive;
+
+$main-font: 'Over the Rainbow', cursive;
+
+strong, h3 {
+  font-family: $header-font;
+  // font-size: 2em;
+  color:yellow;
+-webkit-text-stroke-width: .5px;
+-webkit-text-stroke-color: #4d243d
+}
+
+h3  {
+  text-decoration: underline;
+}
+
 .content {
-  width: 500px;
+  text-align: center;
+  // width: 500px;
   background-image: url("../../assets/svg/body.svg");
   margin: 20vh 0 0 30vw;
 }
@@ -20,9 +37,7 @@
  :hover {
     text-decoration:none;
 }
- li ul li {
-    width:200px;
-}
+
  li ul {
     border:none;
 }
