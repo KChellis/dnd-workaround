@@ -14,7 +14,7 @@
         <br>
           level {{spell.level}}
           <i>{{spell.school}}</i>
-          <h4 *ngIf="spell.ritual != false">Ritual</h4>
+          <span *ngIf="spell.ritual != false">, can be cast as ritual</span>
          <br>
          <strong>
            Casting Time:
