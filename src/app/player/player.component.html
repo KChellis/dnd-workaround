@@ -27,6 +27,8 @@
          </strong>{{spell.duration}}
          <br>
         <ul>
+          <li *ngIf="spell.verbal != false">Verbal</li>
+          <li *ngIf="spell.somatic != false">Somatic</li>
           <li>
            <strong>Components: </strong>
           </li>
