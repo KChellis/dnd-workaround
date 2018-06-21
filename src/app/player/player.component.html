@@ -61,7 +61,7 @@
       <div class="spells">
         <span>Prepared Spells:</span>
         <ul>
-          <li *ngFor="let spell of equippedSpells | async" class="spell">
+          <li *ngFor="let spell of equippedSpells" class="spell">
             <h3>{{spell.name}}</h3>
               level {{spell.level}}
               <i>{{spell.school}}</i>

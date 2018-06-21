@@ -19,39 +19,51 @@ export class PlayerComponent implements OnInit {
   currentCharacter;
   characterClass;
   spellList;
+  tempCharacter;
   characterId: number;
   equippedSpellIds: number[] = [];
   equippedSpells = [];
   spellsFull: boolean = false;
-  spellsEquipped: booelan = false;
+  spellsEquipped: boolean = false;
   spellsLeft: number;
 
   ngOnInit() {
     this.router.params.forEach((urlParameters) => {
         this.characterId = parseInt(urlParameters['id']);
     });
-    this.currentCharacter = this.characterService.getCharacterById(this.characterId);
-    this.characterClass = this.classService.getClassById(this.currentCharacter.classId);
-    this.spellList = this.spellService.getSpellsByClass(this.currentCharacter.classId)
+    this.tempCharacter = this.characterService.getCharacterById(this.characterId);
+    setTimeout(() => {
+      this.currentCharacter = this.tempCharacter.__zone_symbol__value;
+      this.characterClass = this.classService.getClassById(this.currentCharacter.classId);
+      this.spellList = this.spellService.getSpellsByClass(this.currentCharacter.classId);
+    }, 1000);
+    // this.characterClass = this.classService.getClassById(this.currentCharacter.classId);
+    // this.spellList = this.spellService.getSpellsByClass(this.currentCharacter.classId);
+    // this.characterClass = this.classService.getClassById(4);
+    // this.spellList = this.spellService.getSpellsByClass(4);
 
   }
 
   addSpell(spellId: number){
-    if(this.equippedSpells.indexOf(spellId) === -1){
+    if(this.equippedSpellIds.indexOf(spellId) === -1){
       this.equippedSpellIds.push(spellId);
-      this.equippedSpells.push(this.spellService.getSpellById(spellId));
-      this.spellsLeft -= 1;
-      if(this.equippedSpells.length === this.currentCharacter.spellCount){
-        this.spellsFull = true;
-      }
+      let spell = this.spellService.getSpellById(spellId);
+      setTimeout(() => {
+        this.equippedSpells.push(spell.__zone_symbol__value);
+        this.spellsLeft -= 1;
+        if(this.equippedSpells.length === 5){
+          this.spellsFull = true;
+        }
+      }, 1000);
     }
 
   }
 
   removeSpell(spellId: number){
-    if(this.equippedSpells.indexOf(spellId) !== -1){
-      this.equippedSpells.splice(this.equippedSpellIds.indexOf(spellId), 1);
-      this.equippedSpellIds.splice(this.equippedSpellIds.indexOf(spellId), 1);
+    let index = this.equippedSpellIds.indexOf(spellId);
+    if(index !== -1){
+      this.equippedSpells.splice(index, 1);
+      this.equippedSpellIds.splice(index, 1);
       this.spellsLeft += 1;
       this.spellsFull = false;
     }

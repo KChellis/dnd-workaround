@@ -22,7 +22,6 @@ export class CharacterService {
 
   getCharacterById(characterId: number){
     let url = "https://dnd-spell-organizer.herokuapp.com/characters/" + characterId;
-    console.log(url);
     return this.http.get(url).toPromise().then(result => {
       console.log(result);
       return result;
