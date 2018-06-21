@@ -47,7 +47,7 @@ export class PlayerComponent implements OnInit {
       this.equippedSpellIds.push(spellId);
       let spell = this.spellService.getSpellById(spellId);
       setTimeout(() => {
-        // this.equippedSpells.push(spell);
+        this.equippedSpells.push(spell.__zone_symbol__value);
         this.spellsLeft -= 1;
         if(this.equippedSpells.length === this.currentCharacter.spellCount){
           this.spellsFull = true;
