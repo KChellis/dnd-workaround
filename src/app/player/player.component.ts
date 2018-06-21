@@ -17,7 +17,6 @@ export class PlayerComponent implements OnInit {
 
   constructor(private router: ActivatedRoute, private characterService: CharacterService, private classService: ClassService, private spellService: SpellService, private http:HttpClient) { }
   currentCharacter;
-  characterClass;
   spellList;
   tempCharacter;
   characterId: number;
@@ -34,16 +33,13 @@ export class PlayerComponent implements OnInit {
     this.tempCharacter = this.characterService.getCharacterById(this.characterId);
     setTimeout(() => {
       this.currentCharacter = this.tempCharacter.__zone_symbol__value;
-      this.characterClass = this.classService.getClassById(this.currentCharacter.classId);
       this.spellList = this.spellService.getSpellsByClass(this.currentCharacter.classId);
       this.spellsLeft = this.currentCharacter.spellCount;
-    }, 1000);
+    }, 1500);
     // this.characterClass = this.classService.getClassById(this.currentCharacter.classId);
     // this.spellList = this.spellService.getSpellsByClass(this.currentCharacter.classId);
     // this.characterClass = this.classService.getClassById(4);
     // this.spellList = this.spellService.getSpellsByClass(4);
-    
-
   }
 
   addSpell(spellId: number){
@@ -53,10 +49,10 @@ export class PlayerComponent implements OnInit {
       setTimeout(() => {
         this.equippedSpells.push(spell.__zone_symbol__value);
         this.spellsLeft -= 1;
-        if(this.equippedSpells.length === 5){
+        if(this.equippedSpells.length === this.currentCharacter.spellCount){
           this.spellsFull = true;
         }
-      }, 400);
+      }, 1000);
     }
 
   }
@@ -77,6 +73,34 @@ export class PlayerComponent implements OnInit {
 
   changeSpells(){
     this.spellsEquipped = false;
+  }
+
+  getClass(classId: number){
+    if(classId === 1) {
+      return "Barbarian"
+    } else if (classId === 2) {
+      return "Bard"
+    } else if (classId === 3) {
+      return "Cleric"
+    } else if (classId === 4) {
+      return "Druid"
+    } else if (classId === 5) {
+      return "Fighter"
+    } else if (classId === 6) {
+      return "Monk"
+    } else if (classId === 7) {
+      return "Paladin"
+    } else if (classId === 8) {
+      return "Ranger"
+    } else if (classId === 9) {
+      return "Rogue"
+    } else if (classId === 10) {
+      return "Sorcerer"
+    } else if (classId === 11) {
+      return "Warlock"
+    } else {
+      return "Wizard"
+    }
   }
 
 }
