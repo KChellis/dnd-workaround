@@ -19,12 +19,25 @@ export class SpellListComponent implements OnInit {
 
   constructor(private router: ActivatedRoute, private spellService: SpellService, private characterService: CharacterService, private http:HttpClient) { }
   spellList;
+  spellListByClass;
+  byClass: boolean = false;
   ngOnInit() {
     this.spellList = this.spellService.getSpells();
   }
 
   formatDescription(description: String) {
     return description.split("~");
+  }
+
+  filterSpells(classId: number){
+    if(classId === 0){
+      this.byClass = false;
+    } else{
+      this.spellListByClass = this.spellService.getSpellsByClass(classId);
+      setTimeout(() =>{
+        this.byClass = true;
+      }, 1000);
+    }
   }
 
 }

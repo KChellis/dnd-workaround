@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-// import { SpellService } from '../spell.service';
-// import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { CharacterService } from '../character.service';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-// const httpOptions = {
-//   headers: new HttpHeaders({'Content-Type' : 'application/json'})
-// };
+const httpOptions = {
+  headers: new HttpHeaders({'Content-Type' : 'application/json'})
+};
 
 @Component({
   selector: 'app-home',
@@ -12,13 +12,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  constructor(){}
+  // constructor(){}
 
-  // constructor(private http:HttpClient, private characterService:SpellService) { }
-  // classes;
+  constructor(private http:HttpClient, private characterService:CharacterService) { }
+  classes;
 
   ngOnInit() {
-    // this.classes = this.characterService.getSpells();
+    // let newCharacter  = {
+    //     "name": "ISTHISWORKING?!!!!!",
+    //     "id": 7,
+    //     "race": "Elf",
+    //     "classId": 12,
+    //     "castingLevel": 3,
+    //     "spellCount": 3,
+    //     "preparedSpells": ""
+    // };
+    // this.characterService.addNewCharacter(newCharacter);
+    // setTimeout(2000);
+    // this.classes = this.characterService.getCharacters();
   }
 
 }

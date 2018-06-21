@@ -1,9 +1,60 @@
-
-<div class="content" ng-controller="formController">
+<select (change)="filterSpells($event.target.value)">
+    <option value="" disabled selected>Sort by</option>
+    <option value="1">Barbarian</option>
+    <option value="2">Bard</option>
+    <option value="3">Cleric</option>
+    <option value="4">Druid</option>
+    <option value="5">Fighter</option>
+    <option value="6">Monk</option>
+    <option value="7">Paladin</option>
+    <option value="8">Ranger</option>
+    <option value="9">Rogue</option>
+    <option value="10">Sorcerer</option>
+    <option value="11">Warlock</option>
+    <option value="12">Wizard</option>
+  </select>
+<div *ngIf="!byClass" class="content" ng-controller="formController">
   <div >
     <h3 class="headers">All Spells:</h3>
     <ul>
       <li *ngFor="let spell of spellList | async" class="spell">
+        <h3 class="headers">{{spell.name}}</h3>
+          level {{spell.level}}
+          <i>{{spell.school}}</i>
+          <span *ngIf="spell.ritual != false">, can be cast as ritual</span>
+          <br>
+         <strong>
+           Casting Time:
+         </strong> {{spell.castTime}}
+         <br>
+         <strong>
+           Range:
+         </strong> {{spell.range}}
+         <br>
+         <strong>
+           Duration:
+         </strong>{{spell.duration}}
+         <br>
+        <ul>
+          <li>
+           <strong>Components: </strong>
+          </li>
+          <li *ngIf="spell.verbal != false">Verbal</li>
+          <li *ngIf="spell.somatic != false">Somatic</li>
+          <li>Materials: {{spell.material}}</li>
+          <br>
+          <p *ngFor="let paragraph of formatDescription(spell.description)">{{paragraph}}</p>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div *ngIf="byClass" class="content" ng-controller="formController">
+  <div >
+    <h3 class="headers">All Spells:</h3>
+    <ul>
+      <li *ngFor="let spell of spellListByClass | async" class="spell">
         <h3 class="headers">{{spell.name}}</h3>
           level {{spell.level}}
           <i>{{spell.school}}</i>
