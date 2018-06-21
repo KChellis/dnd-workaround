@@ -1,10 +1,10 @@
 
 <div class="content" ng-controller="formController">
   <div >
-    <h3>All Spells:</h3>
+    <h3 class="headers">All Spells:</h3>
     <ul>
       <li *ngFor="let spell of spellList | async" class="spell">
-        <h3>{{spell.name}}</h3>
+        <h3 class="headers">{{spell.name}}</h3>
           level {{spell.level}}
           <i>{{spell.school}}</i>
           <span *ngIf="spell.ritual != false">, can be cast as ritual</span>

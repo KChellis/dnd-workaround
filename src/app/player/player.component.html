@@ -4,9 +4,9 @@
     <div >
       <h3>Equipped Spells:</h3>
       <ul>
-        <li *ngFor="let spell of equippedSpells">{{spell.name}}</li>
+        <li id="selectedSpells" *ngFor="let spell of equippedSpells">{{spell.name}}</li>
       </ul>
-      <h4 *ngIf="!spellsFull">You have {{spellsLeft}} spells left to choose.</h4>
+      <h4 *ngIf="!spellsFull">You have <span id="red">{{spellsLeft}}</span> spells left to choose.</h4>
       <button (click)="done()">Done choosing spells</button>
       <ul>
         <li *ngFor="let spell of spellList | async" class="spell">
@@ -60,7 +60,6 @@
       <span>Spell Count:</span> {{currentCharacter.spellCount}}
     </div>
     <div class="info">
-
       <div class="spells">
         <span>Prepared Spells:</span>
         <ul>
@@ -82,16 +81,16 @@
                Duration:
              </strong>{{spell.duration}}
              <br>
-            <ul>
-              <li>
+
+              <div>
                <strong>Components: </strong>
-              </li>
-              <li *ngIf="spell.verbal != false">Verbal</li>
-              <li *ngIf="spell.somatic != false">Somatic</li>
-              <li>Materials: {{spell.material}}</li>
+              </div>
+              <p *ngIf="spell.verbal != false">Verbal</p>
+              <p *ngIf="spell.somatic != false">Somatic</p>
+              <p>Materials: {{spell.material}}</p>
               <br>
               <p>{{spell.description}}</p>
-            </ul>
+
           </li>
         </ul>
         <button (click)="changeSpells()">Choose new spells</button>

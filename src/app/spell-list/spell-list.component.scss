@@ -1,7 +1,9 @@
 $header-font: 'Germania One', cursive;
 
 $main-font: 'Over the Rainbow', cursive;
-
+.headers {
+  font-size: 2em;
+}
 strong, h3 {
   font-family: $header-font;
   // font-size: 2em;
@@ -18,7 +20,9 @@ h3  {
   text-align: center;
   // width: 500px;
   background-image: url("../../assets/svg/body.svg");
-  margin: 20vh 0 0 30vw;
+  // margin: 20vh 0 0 30vw;
+  margin-left: 30vw;
+  margin-right: 5vw;
 }
 
  ul {
