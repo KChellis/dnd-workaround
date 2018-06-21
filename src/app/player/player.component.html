@@ -32,7 +32,7 @@
             <li>
              <strong>Components: </strong>
             </li>
-            <li>{{spell.description}}</li>
+            <li><p *ngFor="let paragraph of formatDescription(spell.description)">{{paragraph}}</p></li>
           </ul>
         </li>
       </ul>
@@ -89,7 +89,9 @@
               <p *ngIf="spell.somatic != false">Somatic</p>
               <p>Materials: {{spell.material}}</p>
               <br>
-              <p>{{spell.description}}</p>
+
+              <p *ngFor="let paragraph of formatDescription(spell.description)">{{paragraph}}</p>
+
 
           </li>
         </ul>

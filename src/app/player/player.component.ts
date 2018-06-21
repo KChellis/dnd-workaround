@@ -102,5 +102,9 @@ export class PlayerComponent implements OnInit {
       return "Wizard"
     }
   }
- 
+
+  formatDescription(description: String) {
+    return description.split("~");
+  }
+
 }

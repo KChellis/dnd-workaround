@@ -23,4 +23,8 @@ export class SpellListComponent implements OnInit {
     this.spellList = this.spellService.getSpells();
   }
 
+  formatDescription(description: String) {
+    return description.split("~");
+  }
+
 }
