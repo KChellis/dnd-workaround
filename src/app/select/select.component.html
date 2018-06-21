@@ -1,0 +1,11 @@
+<h3>Choose character:</h3>
+<ul>
+  <li *ngFor="let character of characterList">
+    <h4>{{character.name}}</h4>
+    <h5>Race: {{character.race}}</h5>
+    <h5>Class:{{class.name}}</h5>
+    <h5>Casting Level:{{character.castingLevel}}</h5>
+    <h5>Spell Count: {{character.spellCount}}</h5>
+    <button (click)="choose(character)">Choose this character</button>
+  </li>
+</ul>

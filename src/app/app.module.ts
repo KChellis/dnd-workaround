@@ -8,6 +8,7 @@ import { PlayerComponent } from './player/player.component';
 import { routing } from './app-routing';
 import { CharacterFormComponent } from './character-form/character-form.component';
 import { SpellListComponent } from './spell-list/spell-list.component';
+import { SelectComponent } from './select/select.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { SpellListComponent } from './spell-list/spell-list.component';
     HomeComponent,
     PlayerComponent,
     CharacterFormComponent,
-    SpellListComponent
+    SpellListComponent,
+    SelectComponent
   ],
   imports: [
     BrowserModule,

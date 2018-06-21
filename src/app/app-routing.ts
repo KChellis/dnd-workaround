@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { PlayerComponent } from './player/player.component';
 import { CharacterFormComponent } from './character-form/character-form.component';
 import { SpellListComponent }  from './spell-list/spell-list.component';
+import { SelectComponent } from './select/select.component';
 
 const appRoutes: Routes = [
   {
@@ -21,6 +22,10 @@ const appRoutes: Routes = [
   {
     path: 'spell-list',
     component: SpellListComponent
+  },
+  {
+    path: 'select',
+    component: SelectComponent
   }
 ];
 

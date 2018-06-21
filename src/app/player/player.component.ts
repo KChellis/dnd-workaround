@@ -36,6 +36,7 @@ export class PlayerComponent implements OnInit {
       this.currentCharacter = this.tempCharacter.__zone_symbol__value;
       this.characterClass = this.classService.getClassById(this.currentCharacter.classId);
       this.spellList = this.spellService.getSpellsByClass(this.currentCharacter.classId);
+      this.spellsLeft = this.currentCharacter.spellCount;
     }, 1000);
     // this.characterClass = this.classService.getClassById(this.currentCharacter.classId);
     // this.spellList = this.spellService.getSpellsByClass(this.currentCharacter.classId);
@@ -54,7 +55,7 @@ export class PlayerComponent implements OnInit {
         if(this.equippedSpells.length === 5){
           this.spellsFull = true;
         }
-      }, 1000);
+      }, 400);
     }
 
   }
